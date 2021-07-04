@@ -12,7 +12,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     password: 'password',
     database: 'employeeSystem',
-})
+});
 
 app.post('/create', (req,res)=>{
     const name = req.body.name;
