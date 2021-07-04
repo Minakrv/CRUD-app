@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
-const PORT = 3001;
+
+const PORT = process.env.PORT || 3001;
 
 const db = mysql.createConnection({
     user: 'root',
@@ -27,6 +28,6 @@ app.post('/create', (req,res)=>{
     );
 })
 
-app.listen(3001, ()=>{
-    console.log(`Server running on ${PORT}`);
-})
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });
