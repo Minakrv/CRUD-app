@@ -1,9 +1,12 @@
+const { Sequelize, DataTypes, Op } = require("sequelize"); 
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
+const bodyParse = require('body-parser');
+const sequelize = new Sequelize("mysql://root:PASSWORD@localhost:3306/employeeSystem");
 const cors = require("cors");
 require("dotenv").config();
-const PORT = process.env.PORT || 3000;
+
 
 app.use(cors());
 app.use(express.json());
@@ -43,8 +46,20 @@ app.get('/employees', (req,re) => {
     });
 })
 
-app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
+app.listen(3000, async() => {
+    await sequelize.authenticate();
+    await sequelize.sync();
   });
+
+  const shutdown = () => {
+    console.info(`SIGTERM signal received`);
+    console.log(`Closing http server`);
+    server.close(async () => {
+        console.log(`HTTP server closed.`);
+        await sequelize.close();
+    });
+};
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);
 
   
