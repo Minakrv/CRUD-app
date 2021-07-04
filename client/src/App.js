@@ -9,14 +9,14 @@ function App() {
   const [position, setPosition] = useState("");
 
   const addEmployee = () => {
-    console.log(name)
+    
     Axios.post('http://localhost:3001/create', {
       name: name,
       age: age,
       email: email,
       position: position
     }).then(()=>{
-      console.log("Done");
+      console.log("Success");
     })
   }
 
@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <div className="information">
-        <lable>Nmae:</lable>
+        <label>Nmae:</label>
         <input
           type="text"
           onChange={(event) => {
