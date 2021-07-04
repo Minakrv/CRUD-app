@@ -65,7 +65,7 @@ function App() {
         <hr />
         <button onClick={getEmployee}>Show Employees</button>
         {employeeList.map((val,key)=>{
-          return <div> {val.name}</div>
+          return <div className = "employ"> {val.name}</div>
         })}
       </div>
     </div>
