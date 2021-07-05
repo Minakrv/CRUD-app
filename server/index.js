@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const bodyParse = require('body-parser');
-const sequelize = new Sequelize("mysql://root:PASSWORD@localhost:3306/employeeSystem");
+
 const cors = require("cors");
 require("dotenv").config();
 
