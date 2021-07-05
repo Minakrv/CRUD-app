@@ -2,7 +2,7 @@ const { Sequelize, DataTypes, Op } = require("sequelize");
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
-const bodyParse = require('body-parser');
+
 
 const cors = require("cors");
 require("dotenv").config();
@@ -10,13 +10,7 @@ require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "PASSWORD",
-    database: 'employeeSystem'
-  });
-  
+
   
 
 app.post('/create', (req,res)=>{
